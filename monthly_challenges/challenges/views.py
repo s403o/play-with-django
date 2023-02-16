@@ -1,6 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
+monthly_challenges = {
+  "jan": "learn Python",
+  "feb": "learn PostgreSQL",
+  "mar": "learn Django",
+  "apr": "learn Data structure",
+  "may": "learn Ruby",
+  "jun": "learn Rails",
+  "jul": "learn redis",
+  "aug": "learn kafka",
+  "sep": "learn git",
+  "oct": "learn javascript",
+  "nov": "learn system design",
+  "dec": "learn algorithms",
+}
 # Create your views here.
 
 # def jan(request):
@@ -12,17 +26,23 @@ from django.http import HttpResponse, HttpResponseNotFound
 # def mar(request):
 #   return HttpResponse("learn Django")
 
-def monthly_challenges(request, month):
-  challenge_text = None
-  if month == 'jan':
-    challenge_text = "learn Python"
-  elif month == 'feb':
-    challenge_text = "learn PostgreSQL"
-  elif month == 'mar':
-    challenge_text = "learn Django"
-  else:
-    return HttpResponseNotFound("month not supported yet")
-  return HttpResponse(challenge_text)
+
+def monthly_challenge(request, month):
+  try:
+    challenge_text = monthly_challenges[month]
+    return HttpResponse(challenge_text)
+  except:
+    return HttpResponseNotFound("month not supported yet!")
+    # if month == 'jan':
+    #     challenge_text = "learn Python"
+    # elif month == 'feb':
+    #     challenge_text = "learn PostgreSQL"
+    # elif month == 'mar':
+    #     challenge_text = "learn Django"
+    # else:
+        # return HttpResponseNotFound("month not supported yet")
+    # return HttpResponse(challenge_text)
+
 
 def monthly_challenge_by_num(request, month):
-  return HttpResponse(month)
+    return HttpResponse(month)
