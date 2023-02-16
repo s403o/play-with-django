@@ -5,5 +5,7 @@ urlpatterns = [
   # path('jan', views.jan),
   # path('feb', views.feb),
   # path('mar', views.mar)
-  path("<month>", views.monthly_challenges)
+  # order is matter so check first for int then str
+  path("<int:month>", views.monthly_challenge_by_num),
+  path("<str:month>", views.monthly_challenges)
 ]
