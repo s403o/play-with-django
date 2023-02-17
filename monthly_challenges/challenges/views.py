@@ -26,6 +26,22 @@ monthly_challenges = {
 # def mar(request):
 #   return HttpResponse("learn Django")
 
+def index(request):
+  list_items = ""
+  months = list(monthly_challenges.keys())
+
+  for month in months:
+    capitalized_month = month.capitalize()
+    month_path = reverse("month-challenge", args=[month])
+    list_items += f"<li><a href=\"{month_path}\">{capitalized_month}</a></li>"
+
+  # response_data = """
+  #   <ul>
+  #     <li><a href="/challenges/jan">Jan</a></li>
+  #   </ul>
+  # """
+  response_data = f"<ul>{list_items}</ul>"
+  return HttpResponse(response_data)
 
 def monthly_challenge(request, month):
   try:
