@@ -53,7 +53,7 @@ def monthly_challenge(request, month):
         # response_data = render_to_string("challenges/challenge.html")
         # return HttpResponse(response_data)
         return render(request, "challenges/challenge.html", {
-          "month": month.capitalize() + " Challenge",
+          "month": month + " Challenge",
           "text": challenge_text
         })
     except:
