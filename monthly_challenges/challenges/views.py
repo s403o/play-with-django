@@ -14,7 +14,7 @@ monthly_challenges = {
     "sep": "learn git",
     "oct": "learn javascript",
     "nov": "learn system design",
-    "dec": "learn algorithms",
+    "dec": None,
 }
 # Create your views here.
 
