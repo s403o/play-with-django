@@ -7,12 +7,11 @@
 {% block body %}
   <h1>{{title}}</h1>
   <h2>{{author}}</h2>
-  <<p>The book has a rating of {{rating}}
+  <p>The book has a rating of {{rating}}
     {% if is_bestseller %}
       and is a bestseller.
     {% else %}
       not a bestseller.
     {% endif %}
-      
   </p>
 {% endblock  %}
