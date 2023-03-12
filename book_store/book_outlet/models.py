@@ -15,7 +15,7 @@ class Book(models.Model):
     slug = models.SlugField(default="", null=False)  # book name 1 => book-name-1
 
     def get_absolute_url(self):
-        return reverse('book_detail', args=[self.id])
+        return reverse('book_detail', args=[self.slug])
     
     def save(self, *args, **kwargs): # we called super because we want ovveide the built in save
         self.slug = slugify(self.title)
