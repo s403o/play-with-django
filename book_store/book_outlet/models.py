@@ -5,11 +5,14 @@ from django.utils.text import slugify # to transform tittle
 
 # Create your models here.
 
+class Author(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
 
 class Book(models.Model):
     title = models.CharField(max_length=50)
     rating = models.IntegerField(null=False)
-    author = models.CharField(null=True, max_length=100)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     is_bestselling = models.BooleanField(default=False)
     slug = models.SlugField(default="", blank=True,
                              null=False, db_index=True)  # book name 1 => book-name-1
