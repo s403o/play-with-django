@@ -5,6 +5,14 @@ from django.utils.text import slugify # to transform tittle
 
 # Create your models here.
 
+class Country(models.Model):
+     name = models.CharField(max_length=80)
+     code = models.CharField(max_length=2)
+
+     def __str__(self):
+        return f"{self.name} ({self.code})"
+     class Meta: # used to add special options
+        verbose_name_plural = "countries"
 class Address(models.Model):
      street = models.CharField(max_length=80)
      postal_code = models.CharField(max_length=5)
@@ -14,7 +22,7 @@ class Address(models.Model):
           return f"{self.street}, {self.postal_code}, {self.city}"
     
      class Meta: # used to add special options
-        verbose_name_plural = "Adress Entries"
+        verbose_name_plural = "Adress"
         get_latest_by = "order_date"
 
 class Author(models.Model):
@@ -34,7 +42,7 @@ class Book(models.Model):
     is_bestselling = models.BooleanField(default=False)
     slug = models.SlugField(default="", blank=True,
                              null=False, db_index=True)  # book name 1 => book-name-1
-
+    published_countries = models.ManyToManyField(Country) # many to many
     def get_absolute_url(self):
         return reverse('book_detail', args=[self.slug])
     
