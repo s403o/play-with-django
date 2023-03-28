@@ -5,12 +5,13 @@ from .forms import Reviewform
 # Create your views here.
 
 def review(request):
-    form = Reviewform(request.POST)
-    if form.is_valid():
-        print(form.cleaned_data)
-        return HttpResponseRedirect('/thank_you')
-    
-    form = Reviewform()
+    if request.method == 'POST':
+        form = Reviewform(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return HttpResponseRedirect('/thank_you')
+    else:
+        form = Reviewform()
 
     return render(request, 'reviews/review.html', {
         'form': form
