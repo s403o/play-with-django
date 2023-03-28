@@ -7,14 +7,10 @@
   <title>Document</title>
 </head>
 <body>
-  <form method="POST">
+  <form action="/" method="POST">
     {% csrf_token %}
     <label for="name">Name</label>
     <input type="text" name="name" id="name" placeholder="Enter your name">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" placeholder="Enter your email">
-    <label for="review">Review</label>
-    <textarea name="review" id="review" cols="30" rows="10"></textarea>
     <input type="submit" value="Submit">
   </form>
 </body>
